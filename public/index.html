@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>WebSocket Chat</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 500px;
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    #usernamePage,
+    #chatPage {
+      display: none;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    #usernamePage.active,
+    #chatPage.active {
+      display: flex;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #messages {
+      list-style: none;
+      padding: 0;
+      height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .message {
+      max-width: 70%;
+      padding: 10px;
+      border-radius: 10px;
+      word-wrap: break-word;
+    }
+
+    .self {
+      background-color: #dcf8c6;
+      align-self: flex-end;
+    }
+
+    .other {
+      background-color: #f0f0f0;
+      align-self: flex-start;
+    }
+
+    #inputArea {
+      display: flex;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <!-- Page 1: Input Username -->
+    <div id="usernamePage" class="active">
+      <h2>Enter your name</h2>
+      <input id="usernameInput" type="text" placeholder="Your name..." />
+      <button onclick="startChat()">Join Chat</button>
+    </div>
+
+    <!-- Page 2: Chat -->
+    <div id="chatPage">
+      <h2>WebSocket Chat</h2>
+      <ul id="messages"></ul>
+      <div id="inputArea">
+        <input id="messageInput" type="text" placeholder="Type a message..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
